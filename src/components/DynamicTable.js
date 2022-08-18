@@ -15,16 +15,16 @@ const DynamicTable = ({amount}) => {
     }, [amount]);
 
 
-    const handleClickItem = (item, index) => {
-        const arr = items.map((i, position) => {
-            if(index === position) {
-                return "up"
+    const handleClickItem = (selectedIndex) => {
+        const newItems = items.map((i, position) => {
+            if (selectedIndex === position) {
+                return "up";
             }
 
             return "down";
         })
 
-        setItems(arr)
+        setItems(newItems)
     }
 
     return (
@@ -34,7 +34,9 @@ const DynamicTable = ({amount}) => {
                 {items.map((item, index) => (
                     <td
                         style={{padding: 10, background: "#F2F4F6", cursor: 'pointer'}}
-                        onClick={() => handleClickItem(item, index)}>{item}
+                        onClick={() => handleClickItem(index)}
+                    >
+                        {item}
                     </td>
                 ))}
             </tr>
